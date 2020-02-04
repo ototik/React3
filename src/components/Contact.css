@@ -120,3 +120,12 @@
     align-items: center;
   
   }
+
+  .Contact span {
+    
+    color: green;
+  }
+
+  .Contact span.is-favorite {
+    color: red;
+  }

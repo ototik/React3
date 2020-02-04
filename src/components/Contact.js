@@ -1,21 +1,45 @@
 import React from 'react';
 import './Contact.css';
 
-function Contact(props) {
+
+class Contact extends React.Component {
+    constructor (props) {
+        super(props);
+        this.state = {
+            favorite: false,
+          };
+    }
+    render () {
     return (
         <div className="Contact">
             <img className="avatar"
-                src={props.avatar}
-                alt={props.name} />
+                src={this.props.avatar}
+                alt={this.props.names} />
             <div className="status">
-                <h4 className="name">{props.name}</h4>
+                <h4 className="name">{this.props.names}</h4>
                     <div>
-                    {props.status === "true" ? <div className="row"><div className="status-online"></div><div className="status-text"> online </div></div> : <div className="row"><div className="status-offline"></div><div className="status-text"> offline </div></div>}
+                    <span
+                onClick={event => {
+                const newFavorite = !this.state.favorite;
+                this.setState({ favorite: newFavorite });
+                
+              }}
+            >
+
+                <p className='status-text'> 
+                    <span className={this.state.favorite ? 'status-online' : 'status-offline'}></span> 
+                    {this.state.favorite ? 'Online' : 'Offline'} 
+                </p>
+                </span>
+
+             
+                
+
+                   
                 </div>
             </div>
-        </div>
+            </div>
+         
     );
-}
-
-
+}}
 export default Contact;
